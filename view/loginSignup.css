@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #176B87;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #053B50;
+    border-radius: 10px;
+    padding: 30px;
+    gap: 10px;
+}
+input{
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #EEEEEE;
+    border-radius: 10px;
+    border: none;
+    font-weight: 100;
+}
+input:focus{
+    outline: #C5F0A4;
+}
+label{
+    font-size: 22px;
+    font-weight: 800;
+    color: #58BEBC;
+    text-align: left;
+}
+button{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 15px;
+    font-size: 25px;
+    background-color: #C5F0A4;
+    color: #000000ba;
+    font-weight: 700;
+    cursor: pointer;
+}
+#signup{
+    background-color: #F34573;
+}
+#login{
+    background-color: #C5F0A4;
+}
+a{
+    text-decoration: none;
+    color: #000000ba;
+}
+h1{
+    text-align: center;
+    color: #EEEEEE;
+}
+img{
+    height: 30px;
+}

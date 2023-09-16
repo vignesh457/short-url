@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/loginSignup.css">
+    <title>Url shortener | Signup</title>
+</head>
+<body>
+    <form method="post" action="/user/signup">
+        <h1>Signup page</h1>
+        <img src="/images/underline.png" alt="line">
+        <label>Username</label><input placeholder="Ex: jone" name="username" type="text" required/>
+        <label>Email</label><input placeholder="abc@gmail.com" name="email" type="email" required/>
+        <label>Password</label><input placeholder="******" name="password" type="password" required/>
+        <div id="button-ctn">
+            <button id="signup" type="submit">Signup</button>
+            <button id="login"><a href="/user/login">Login</a></button>
+        </div>
+    </form>
+</body>
+</html>

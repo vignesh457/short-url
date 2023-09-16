@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/style.css">
+    <title>Url Shortener</title>
+</head>
+<body>
+    <div class="top">
+        <button id="logout" onclick="clearCookies()"><i class="fa-solid fa-right-from-bracket"></i></button>
+        <h1>URL Shortener</h1>
+        <div class="popup">
+            <%if (id) {%>
+                <input type="text" id="myInput" value="<%= baseUrl %><%= id %>" readonly>
+            <%}%>
+            <button onclick="copyToClipboard()" id="copy"><i class="fa-regular fa-copy"></i></button>
+        </div>
+        
+        <form method="post" action="/url">
+            <label>Enter the original URL to be shortened</label>
+            <div class="input-ctn">
+                <input type="text" name="url" placeholder="https://www.example.com" />
+                <button type="submit">Generate</button>
+            </div>
+        </form>
+    </div>
+    <div class="bottom">
+        <table class="table">
+            <thead>
+                <th>Short URL</th>
+                <th>Redirect URL</th>
+                <th>Clicks</th>
+            </thead>
+            <tbody>
+                <% urls.forEach(url => { %>
+                    <tr>
+                        <td><%= baseUrl %><%= url.short_id %></td>
+                        <td><%= url.redirect_url %></td>
+                        <td><%= url.clicks %></td>
+                    </tr>
+                <% })%>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://kit.fontawesome.com/1256163888.js" crossorigin="anonymous"></script>
+    <script>
+        var copyText = document.getElementById("myInput");
+        function copyToClipboard() {
+            var copyBtn = document.getElementById("copy");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            document.getSelection().removeAllRanges();
+            var prevHtml = copyBtn.innerHTML;
+            copyBtn.innerHTML = "copied"
+            setTimeout(()=>{
+                copyBtn.innerHTML=prevHtml;
+            },1000)
+        }
+        function popupExpand(){
+            var popup = document.getElementsByClassName("popup")[0];
+            if(copyText){
+                popup.style.display="flex"
+            }
+            else{
+                popup.style.display="none"
+            }
+        }
+        popupExpand()
+        function clearCookies() {
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                var eqPos = cookie.indexOf("=");
+                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+            window.location.reload();
+            console.log("cookies cleared")
+        }
+    </script>
+</body>
+</html>
