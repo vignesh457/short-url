@@ -18,7 +18,7 @@
             <button onclick="copyToClipboard()" id="copy"><i class="fa-regular fa-copy"></i></button>
         </div>
         
-        <form method="post" action="/url">
+        <form method="post" action="/u">
             <label>Enter the original URL to be shortened</label>
             <div class="input-ctn">
                 <input type="text" name="url" placeholder="https://www.example.com" />
@@ -27,22 +27,27 @@
         </form>
     </div>
     <div class="bottom">
-        <table class="table">
-            <thead>
-                <th>Short URL</th>
-                <th>Redirect URL</th>
-                <th>Clicks</th>
-            </thead>
-            <tbody>
-                <% urls.forEach(url => { %>
-                    <tr>
-                        <td><%= baseUrl %><%= url.short_id %></td>
-                        <td><%= url.redirect_url %></td>
-                        <td><%= url.clicks %></td>
-                    </tr>
-                <% })%>
-            </tbody>
-        </table>
+        <%if (urls.length==0) {%>
+            <h1 style="color: #053B50; padding: 30px;"><i class="fa-sharp fa-solid fa-clock-rotate-left"></i> Empty History</h1>
+        <%}%>
+        <%if (urls.length!=0) {%>
+            <table class="table">
+                <thead>
+                    <th>Short URL</th>
+                    <th>Redirect URL</th>
+                    <th>Clicks</th>
+                </thead>
+                <tbody>
+                    <% urls.forEach(url => { %>
+                        <tr>
+                            <td><%= baseUrl %><%= url.short_id %></td>
+                            <td><%= url.redirect_url %></td>
+                            <td><%= url.clicks %></td>
+                        </tr>
+                    <% })%>
+                </tbody>
+            </table>
+        <%}%>
     </div>
     <script src="https://kit.fontawesome.com/1256163888.js" crossorigin="anonymous"></script>
     <script>

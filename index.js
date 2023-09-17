@@ -22,7 +22,7 @@ app.set("views", path.resolve("view"))
 
 
 app.use("/", staticRouter)
-app.use("/url", urlRouter)
+app.use("/u", urlRouter)
 app.use("/user",userRouter)
 
 app.listen(PORT,()=>console.log(`server listening at port no:${PORT}`));

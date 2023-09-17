@@ -4,13 +4,11 @@ const {Schema, model} = mongoose;
 const urlSchema = new Schema({
     short_id: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     redirect_url: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     clicks: {
         type: Number,

@@ -12,7 +12,7 @@ exports.getAllUrls = async(req,res)=>{
 
 exports.addUrl = async(req,res)=>{
     try{
-        const uid = new ShortUniqueId({ length: 7 });
+        const uid = new ShortUniqueId({ length: 4 });
         var newUrl = await URL.create({
             short_id: uid.rnd(),
             redirect_url: req.body.url.trim(),
